@@ -24,8 +24,9 @@ struct Provider: IntentTimelineProvider {
         let currentDate = Date()
         
         let entryDate = currentDate
-        let entry = SimpleEntry(date: entryDate, configuration: configuration, color: UserDefaults.standard.integer(forKey: "color"))
-        print(UserDefaults.standard.integer(forKey: "color"))
+        let data = UserDefaults(suiteName: "group.widgetdecorator")?.data(forKey: "background")
+        let entry = SimpleEntry(date: entryDate, configuration: configuration, color: UserDefaults.standard.integer(forKey: "color"), background: Image(uiImage: UIImage(data: data ?? Data()) ?? UIImage()))
+        
         entries.append(entry)
         let timeline = Timeline(entries: entries, policy: .atEnd)
         completion(timeline)
@@ -52,6 +53,7 @@ struct SimpleEntry: TimelineEntry {
     public let date: Date
     public let configuration: ConfigurationIntent
     public var color: Int
+    public var background: Image = Image("")
 }
 
 struct PlaceholderView : View {
@@ -70,10 +72,10 @@ struct WidgetDecorator_WidgetsEntryView : View {
         switch family {
         case .systemSmall:
             VStack{
-                WidgetItem(color: Color.blue, clock: entry.configuration.showTime!.boolValue)
+                WidgetItem(color: Color.blue, clock: entry.configuration.showTime?.boolValue ?? false)
             }
         default:
-            WidgetItem(color: Color.black, clock: entry.configuration.showTime!.boolValue)
+            WidgetItem(color: Color.black, clock: entry.configuration.showTime?.boolValue ?? false)
         }
     }
 }
