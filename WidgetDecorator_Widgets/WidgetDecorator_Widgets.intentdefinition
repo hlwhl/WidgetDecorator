@@ -26,7 +26,7 @@
 			<key>INIntentIneligibleForSuggestions</key>
 			<true/>
 			<key>INIntentLastParameterTag</key>
-			<integer>5</integer>
+			<integer>7</integer>
 			<key>INIntentName</key>
 			<string>Configuration</string>
 			<key>INIntentParameters</key>
@@ -35,9 +35,9 @@
 					<key>INIntentParameterConfigurable</key>
 					<true/>
 					<key>INIntentParameterDisplayName</key>
-					<string>ShowTime?</string>
+					<string>显示时间？</string>
 					<key>INIntentParameterDisplayNameID</key>
-					<string>CBU6rA</string>
+					<string>lg87SU</string>
 					<key>INIntentParameterDisplayPriority</key>
 					<integer>1</integer>
 					<key>INIntentParameterMetadata</key>
@@ -45,14 +45,14 @@
 						<key>INIntentParameterMetadataFalseDisplayName</key>
 						<string>false</string>
 						<key>INIntentParameterMetadataFalseDisplayNameID</key>
-						<string>FJSyBm</string>
+						<string>dWUIqs</string>
 						<key>INIntentParameterMetadataTrueDisplayName</key>
 						<string>true</string>
 						<key>INIntentParameterMetadataTrueDisplayNameID</key>
-						<string>yAEeqU</string>
+						<string>jp1wWK</string>
 					</dict>
 					<key>INIntentParameterName</key>
-					<string>显示日期</string>
+					<string>showTime</string>
 					<key>INIntentParameterPromptDialogs</key>
 					<array>
 						<dict>
@@ -65,9 +65,9 @@
 							<key>INIntentParameterPromptDialogCustom</key>
 							<true/>
 							<key>INIntentParameterPromptDialogFormatString</key>
-							<string>显示日期</string>
+							<string>显示时间？</string>
 							<key>INIntentParameterPromptDialogFormatStringID</key>
-							<string>IujMDo</string>
+							<string>5s2m13</string>
 							<key>INIntentParameterPromptDialogType</key>
 							<string>Primary</string>
 						</dict>
@@ -75,7 +75,7 @@
 					<key>INIntentParameterSupportsResolution</key>
 					<true/>
 					<key>INIntentParameterTag</key>
-					<integer>5</integer>
+					<integer>7</integer>
 					<key>INIntentParameterType</key>
 					<string>Boolean</string>
 				</dict>

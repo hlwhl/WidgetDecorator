@@ -61,19 +61,18 @@ struct PlaceholderView : View {
 
 struct WidgetDecorator_WidgetsEntryView : View {
     var entry: Provider.Entry
+    @Environment(\.widgetFamily) var family
     @State var color = UserDefaults(suiteName: "group.widgetdecorator")!.integer(forKey: "color")
     
+    @ViewBuilder
     var body: some View {
-        VStack{
-            if(self.color == 1){
-                Text("777")
-            } else if(self.color == 2){
-                Text("666")
-            } else if(self.color == 3){
-                Text("888")
-            } else if(self.color == 4){
-                Text("999")
+        switch family {
+        case .systemSmall:
+            VStack{
+                WidgetItem(color: Color.blue, clock: entry.configuration.showTime!.boolValue)
             }
+        default:
+            WidgetItem(color: Color.black, clock: entry.configuration.showTime!.boolValue)
         }
     }
 }
@@ -87,7 +86,7 @@ struct WidgetDecorator_Widgets: Widget {
             WidgetDecorator_WidgetsEntryView(entry: entry)
         }
         .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
+        .description("装饰你的桌面")
     }
 }
 

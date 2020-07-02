@@ -10,7 +10,7 @@ import Photos
 import WidgetKit
 
 struct ContentView: View {
-    var testdata:[WidgetPreviewItem] = [WidgetPreviewItem(),WidgetPreviewItem(),WidgetPreviewItem()]
+    var testdata:[WidgetPreviewItem] = [WidgetPreviewItem(color: Color.red),WidgetPreviewItem(color: Color.green),WidgetPreviewItem(color: Color.blue)]
     @State var pressed = false
     var body: some View {
         NavigationView{
@@ -38,6 +38,7 @@ struct ContentView: View {
                     }
             }
             .navigationBarTitle("Widget库")
+//            .navigationBarItems(trailing: Button(action: {}, label: { Text("添加") }))
         }
     }
 }
@@ -48,27 +49,16 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
-//实际widget view
-struct WidgetItem: View {
-    var body: some View {
-        VStack(alignment: .center){
-            VStack(alignment: .center){
-                Text("Title").font(.title)
-                Text("content").font(.body)
-            }.frame(width: 170, height: 170, alignment: .leading)
-            .background(RoundedRectangle(cornerRadius: 20, style: .continuous).fill(Color.blue))
-            Text("widget name")
-                .font(.caption)}
-    }
-}
-
 //用于app内widget展示，具有触摸交互功能
-struct WidgetPreviewItem: View {
+struct WidgetPreviewItem: View, Identifiable {
+    let id = UUID()
+    
     @State var pressed = false
+    var color : Color
     var body: some View {
         VStack{
             Button(action: {}){
-                WidgetItem()
+                WidgetItem(color: color)
             }
             .buttonStyle(ScaleButtonStyle())
         }
@@ -82,6 +72,7 @@ struct ScaleButtonStyle: ButtonStyle {
     }
 }
 
+//横向滑动
 struct CategoryRow: View {
     var categoryName: String
     var items: [WidgetPreviewItem]
@@ -92,10 +83,11 @@ struct CategoryRow: View {
                 .font(.headline).padding(.leading, 15).padding(.top, 5)
             ScrollView(.horizontal, showsIndicators: false){
                 HStack{
-                    WidgetPreviewItem()
-                    WidgetPreviewItem()
-                    WidgetPreviewItem()}
-            }.frame(height: 200).padding(.leading, 10)
+                    ForEach(items){widget in
+                        widget
+                    }
+                }.frame(height: 200).padding(.leading, 10)
+            }
         }
     }
 }
