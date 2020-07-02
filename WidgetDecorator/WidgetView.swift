@@ -11,6 +11,10 @@ import SwiftUI
 struct WidgetItem: View{
     var color : Color
     var clock = false
+    @State var now = Date()
+    @State var uiImgData = UserDefaults(suiteName: "group.widgetdecorator")!.data(forKey: "background")
+    
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var body: some View {
         VStack(alignment: .center){
@@ -18,12 +22,11 @@ struct WidgetItem: View{
                 Text("Title").font(.title)
                 Text("content").font(.body)
                 if(clock){
-                    Text(Date(), style: .time)
+                    Text("\(now)").onReceive(timer, perform: {input in self.now = input})
                 }
-            }.frame(width: 170, height: 170, alignment: .center)
-            .background(RoundedRectangle(cornerRadius: 20, style: .continuous).fill(color))
-            Text("widget name")
-                .font(.caption)}
+            }
+        }.frame(width: 170, height: 170, alignment: .center)
+        .background(Image(uiImage: UIImage(data: uiImgData ?? Data()) ?? UIImage()).resizable().clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous)))
     }
     
     //save widget config

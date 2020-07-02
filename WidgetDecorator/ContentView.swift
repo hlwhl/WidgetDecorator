@@ -10,8 +10,10 @@ import Photos
 import WidgetKit
 
 struct ContentView: View {
-    var testdata:[WidgetPreviewItem] = [WidgetPreviewItem(color: Color.red),WidgetPreviewItem(color: Color.green),WidgetPreviewItem(color: Color.blue)]
+    @State var showImagePicker: Bool = false
+    @State var testdata:[WidgetPreviewItem] = [WidgetPreviewItem(color: Color.red),WidgetPreviewItem(color: Color.green),WidgetPreviewItem(color: Color.blue)]
     @State var pressed = false
+    @State var refresh = true
     var body: some View {
         NavigationView{
             List{
@@ -37,8 +39,16 @@ struct ContentView: View {
                         WidgetCenter.shared.reloadAllTimelines()
                     }
             }
+            .sheet(isPresented: $showImagePicker) {
+                ImagePicker(sourceType: .photoLibrary) { image in
+                    UserDefaults(suiteName: "group.widgetdecorator")!.set(image.jpegData(compressionQuality: 0.9), forKey: "background")
+                    WidgetCenter.shared.reloadAllTimelines()
+                }
+            }
             .navigationBarTitle("Widget库")
-//            .navigationBarItems(trailing: Button(action: {}, label: { Text("添加") }))
+            .navigationBarItems(trailing: Button(action: {}, label: { Text("添加").onTapGesture(perform: {
+                self.showImagePicker.toggle()
+            }) }))
         }
     }
 }
@@ -54,13 +64,16 @@ struct WidgetPreviewItem: View, Identifiable {
     let id = UUID()
     
     @State var pressed = false
+    @State var uiImgData = UserDefaults(suiteName: "group.widgetdecorator")!.data(forKey: "background")
     var color : Color
     var body: some View {
         VStack{
             Button(action: {}){
-                WidgetItem(color: color)
+                WidgetItem(color: color, uiImgData: uiImgData)
             }
             .buttonStyle(ScaleButtonStyle())
+            Text("widget name")
+                .font(.caption)
         }
     }
 }

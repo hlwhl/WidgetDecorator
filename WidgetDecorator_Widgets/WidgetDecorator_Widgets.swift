@@ -9,6 +9,7 @@ import WidgetKit
 import SwiftUI
 import Intents
 import Photos
+import UIKit
 
 struct Provider: IntentTimelineProvider {
     public func snapshot(for configuration: ConfigurationIntent, with context: Context, completion: @escaping (SimpleEntry) -> ()) {
