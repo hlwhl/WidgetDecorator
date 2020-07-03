@@ -24,12 +24,22 @@ struct Provider: IntentTimelineProvider {
         let currentDate = Date()
         
         let entryDate = currentDate
-        let data = UserDefaults(suiteName: "group.widgetdecorator")?.data(forKey: "background")
-        let entry = SimpleEntry(date: entryDate, configuration: configuration, color: UserDefaults.standard.integer(forKey: "color"), background: Image(uiImage: UIImage(data: data ?? Data()) ?? UIImage()))
+        //let data = UserDefaults(suiteName: "group.widgetdecorator")?.data(forKey: "background")
         
-        entries.append(entry)
-        let timeline = Timeline(entries: entries, policy: .atEnd)
-        completion(timeline)
+        let id = UserDefaults(suiteName: "group.widgetdecorator")!.string(forKey: "selectedImgId") ?? ""
+        var aid : [String] = [String]()
+        aid.append(id)
+        let asset = PHAsset.fetchAssets(withLocalIdentifiers: aid, options: nil)
+        PHImageManager.default().requestImageDataAndOrientation(for: asset.firstObject ?? PHAsset(), options: nil, resultHandler: {(data, b, c, d) in
+            
+            let entry = SimpleEntry(date: entryDate, configuration: configuration, color: UserDefaults.standard.integer(forKey: "color"), background: Image(uiImage: UIImage(data: data ?? Data()) ?? UIImage()))
+            
+            entries.append(entry)
+            let timeline = Timeline(entries: entries, policy: .atEnd)
+            completion(timeline)
+        })
+    
+
         //        getTheLatestPhotos(amount: 1).enumerateObjects({ (a,b,c) in
         //            PHImageManager.default().requestImage(for: a, targetSize: PHImageManagerMaximumSize, contentMode: .default, options: nil, resultHandler: { (image, info) in
         //                entry.img = Image(uiImage: image ?? UIImage())
@@ -72,19 +82,19 @@ struct WidgetDecorator_WidgetsEntryView : View {
         switch family {
         case .systemSmall:
             VStack{
-                WidgetItem(color: Color.blue, clock: entry.configuration.showTime?.boolValue ?? false)
+                WidgetItem(color: Color.blue, clock: entry.configuration.showTime?.boolValue ?? false, background: entry.background)
             }
         case .systemMedium:
             HStack(){
-                WidgetItem(color: Color.blue, clock: false)
+                WidgetItem(color: Color.blue, clock: false, background: entry.background)
                 Text(Date(), style: .date)
             }
         case .systemLarge:
             VStack{
-                WidgetItem(color: Color.blue, clock: entry.configuration.showTime?.boolValue ?? false, isBig: true)
+                WidgetItem(color: Color.blue, clock: entry.configuration.showTime?.boolValue ?? false, background: entry.background, isBig: true)
             }
         default:
-            WidgetItem(color: Color.black, clock: entry.configuration.showTime?.boolValue ?? false)
+            WidgetItem(color: Color.black, clock: entry.configuration.showTime?.boolValue ?? false, background: entry.background)
         }
     }
 }

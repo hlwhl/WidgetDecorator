@@ -47,9 +47,16 @@ struct ContentView: View {
                 //                    WidgetCenter.shared.reloadAllTimelines()
                 //                }
                 
-                PHPickerView() {image in
-                    UserDefaults(suiteName: "group.widgetdecorator")!.set(image.jpegData(compressionQuality: 1), forKey: "background")
-                    data.backimgdata = image.jpegData(compressionQuality: 1) ?? Data()
+                PHPickerView() {image , assetId in
+                    UserDefaults(suiteName: "group.widgetdecorator")!.set(assetId, forKey: "selectedImgId")
+                    
+                    var aid : [String] = [String]()
+                    aid.append(assetId)
+                    let asset = PHAsset.fetchAssets(withLocalIdentifiers: aid, options: nil)
+                    PHImageManager.default().requestImageDataAndOrientation(for: asset.firstObject ?? PHAsset(), options: nil, resultHandler: {(data, b, c, d) in
+                        self.data.backimgdata = data ?? Data()
+                    })
+                    
                     WidgetCenter.shared.reloadAllTimelines()}
             }
             .navigationBarTitle("Widget库")
@@ -69,16 +76,14 @@ struct ContentView_Previews: PreviewProvider {
 //用于app内widget展示，具有触摸交互功能
 struct WidgetPreviewItem: View, Identifiable {
     let id = UUID()
-    
-    @State var pressed = false
-    @State var uiImgData = UserDefaults(suiteName: "group.widgetdecorator")!.data(forKey: "background")
+
     @ObservedObject var data : SharedData
     
     var color : Color
     var body: some View {
         VStack{
             Button(action: {}){
-                WidgetItem(color: color, uiImgData: data.backimgdata)
+                WidgetItem(color: color, background: Image(uiImage: UIImage(data: data.backimgdata) ?? UIImage()))
             }
             .buttonStyle(ScaleButtonStyle())
             Text("widget name")

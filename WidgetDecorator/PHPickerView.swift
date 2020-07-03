@@ -15,7 +15,7 @@ struct PHPickerView: UIViewControllerRepresentable {
     @Environment(\.presentationMode) private var presentationMode
     
     /// A Binding that will contain the selected UIImage
-    let onImagePicked: (UIImage) -> Void
+    let onImagePicked: (UIImage, String) -> Void
     
     
     func makeCoordinator() -> Coordinator {
@@ -25,7 +25,7 @@ struct PHPickerView: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> PHPickerViewController {
      
         // Create and configure the PHPicker
-        var configuration = PHPickerConfiguration( )
+        var configuration = PHPickerConfiguration(photoLibrary: PHPhotoLibrary.shared())
         configuration.filter = .images
         
         // Set the Coordinator as the PHPickerDelegate
@@ -58,7 +58,7 @@ struct PHPickerView: UIViewControllerRepresentable {
                 itemProvider.loadObject(ofClass: UIImage.self) { [weak self] image, error in
                     DispatchQueue.main.async { [self] in
                         guard let self = self, let image = image as? UIImage else { return }
-                        self.parent.onImagePicked(image)
+                        self.parent.onImagePicked(image, results.first?.assetIdentifier ?? "")
                     }
                 }
             }

@@ -12,12 +12,14 @@ struct WidgetItem: View{
     var color : Color
     var clock = false
     @State var now = Date()
-    @State var uiImgData = UserDefaults(suiteName: "group.widgetdecorator")!.data(forKey: "background")
+    //@State var uiImgData = UserDefaults(suiteName: "group.widgetdecorator")!.data(forKey: "background")
+    @State var background : Image = Image("")
     var isBig = false
     
     var body: some View {
         ZStack{
-            Image(uiImage: UIImage(data: uiImgData ?? Data()) ?? UIImage()).resizable()
+            //Image(uiImage: UIImage(data: uiImgData ?? Data()) ?? UIImage()).resizable()
+            background.resizable()
             if(clock){
                 Text(now, style: .date)
             }
