@@ -41,12 +41,6 @@ struct ContentView: View {
                     }
             }
             .sheet(isPresented: $showImagePicker) {
-                //                ImagePicker(sourceType: .photoLibrary) { image in
-                //                    UserDefaults(suiteName: "group.widgetdecorator")!.set(image.jpegData(compressionQuality: 1), forKey: "background")
-                //                    data.backimgdata = image.jpegData(compressionQuality: 1) ?? Data()
-                //                    WidgetCenter.shared.reloadAllTimelines()
-                //                }
-                
                 PHPickerView() {image , assetId in
                     UserDefaults(suiteName: "group.widgetdecorator")!.set(assetId, forKey: "selectedImgId")
                     
@@ -93,7 +87,7 @@ struct WidgetPreviewItem: View, Identifiable {
 }
 
 class SharedData : ObservableObject{
-    @Published var backimgdata : Data = UserDefaults(suiteName: "group.widgetdecorator")?.data(forKey: "background") ?? Data()
+    @Published var backimgdata : Data = Data()
 }
 
 

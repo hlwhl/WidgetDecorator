@@ -14,9 +14,7 @@ struct PHPickerView: UIViewControllerRepresentable {
     
     @Environment(\.presentationMode) private var presentationMode
     
-    /// A Binding that will contain the selected UIImage
     let onImagePicked: (UIImage, String) -> Void
-    
     
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
@@ -34,10 +32,7 @@ struct PHPickerView: UIViewControllerRepresentable {
         return controller
     }
     
-    func updateUIViewController( _ uiViewController: PHPickerViewController, context: Context) {
-        // Nothing to do
-    }
-    
+    func updateUIViewController( _ uiViewController: PHPickerViewController, context: Context) {}
     
     class Coordinator: NSObject, PHPickerViewControllerDelegate {
         
@@ -47,7 +42,6 @@ struct PHPickerView: UIViewControllerRepresentable {
         
         init( _ parent: PHPickerView ) {
             self.parent = parent
-            
         }
         
         func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
