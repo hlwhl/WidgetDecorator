@@ -74,6 +74,15 @@ struct WidgetDecorator_WidgetsEntryView : View {
             VStack{
                 WidgetItem(color: Color.blue, clock: entry.configuration.showTime?.boolValue ?? false)
             }
+        case .systemMedium:
+            HStack(){
+                WidgetItem(color: Color.blue, clock: false)
+                Text(Date(), style: .date)
+            }
+        case .systemLarge:
+            VStack{
+                WidgetItem(color: Color.blue, clock: entry.configuration.showTime?.boolValue ?? false, isBig: true)
+            }
         default:
             WidgetItem(color: Color.black, clock: entry.configuration.showTime?.boolValue ?? false)
         }

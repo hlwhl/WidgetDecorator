@@ -41,11 +41,16 @@ struct ContentView: View {
                     }
             }
             .sheet(isPresented: $showImagePicker) {
-                ImagePicker(sourceType: .photoLibrary) { image in
-                    UserDefaults(suiteName: "group.widgetdecorator")!.set(image.jpegData(compressionQuality: 0.9), forKey: "background")
-                    WidgetCenter.shared.reloadAllTimelines()
-                    data.backimgdata = image.jpegData(compressionQuality: 0.9) ?? Data()
-                }
+                //                ImagePicker(sourceType: .photoLibrary) { image in
+                //                    UserDefaults(suiteName: "group.widgetdecorator")!.set(image.jpegData(compressionQuality: 1), forKey: "background")
+                //                    data.backimgdata = image.jpegData(compressionQuality: 1) ?? Data()
+                //                    WidgetCenter.shared.reloadAllTimelines()
+                //                }
+                
+                PHPickerView() {image in
+                    UserDefaults(suiteName: "group.widgetdecorator")!.set(image.jpegData(compressionQuality: 1), forKey: "background")
+                    data.backimgdata = image.jpegData(compressionQuality: 1) ?? Data()
+                    WidgetCenter.shared.reloadAllTimelines()}
             }
             .navigationBarTitle("Widget库")
             .navigationBarItems(trailing: Button(action: {}, label: { Text("添加").onTapGesture(perform: {

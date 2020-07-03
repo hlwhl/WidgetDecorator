@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6514403424AEEF9C00EF8D84 /* PHPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6514403324AEEF9C00EF8D84 /* PHPickerView.swift */; };
 		65ADE7B124ADA66500763665 /* WidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ADE7B024ADA66500763665 /* WidgetView.swift */; };
 		65ADE7B224ADA66500763665 /* WidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ADE7B024ADA66500763665 /* WidgetView.swift */; };
 		65ADE7B624ADC94400763665 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ADE7B524ADC94400763665 /* ImagePicker.swift */; };
@@ -64,6 +65,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6514403324AEEF9C00EF8D84 /* PHPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PHPickerView.swift; sourceTree = "<group>"; };
 		65ADE7B024ADA66500763665 /* WidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetView.swift; sourceTree = "<group>"; };
 		65ADE7B524ADC94400763665 /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		65D5F25E24AC3B1200DAADF0 /* WidgetDecorator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WidgetDecorator.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -158,6 +160,7 @@
 				65D5F26524AC3B1300DAADF0 /* Assets.xcassets */,
 				65D5F26A24AC3B1300DAADF0 /* Info.plist */,
 				65D5F26724AC3B1300DAADF0 /* Preview Content */,
+				6514403324AEEF9C00EF8D84 /* PHPickerView.swift */,
 			);
 			path = WidgetDecorator;
 			sourceTree = "<group>";
@@ -370,6 +373,7 @@
 			files = (
 				65D5F29E24AC3BEF00DAADF0 /* WidgetDecorator_Widgets.intentdefinition in Sources */,
 				65D5F26424AC3B1200DAADF0 /* ContentView.swift in Sources */,
+				6514403424AEEF9C00EF8D84 /* PHPickerView.swift in Sources */,
 				65ADE7B624ADC94400763665 /* ImagePicker.swift in Sources */,
 				65ADE7B124ADA66500763665 /* WidgetView.swift in Sources */,
 				65D5F26224AC3B1200DAADF0 /* WidgetDecoratorApp.swift in Sources */,

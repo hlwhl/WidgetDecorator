@@ -13,24 +13,15 @@ struct WidgetItem: View{
     var clock = false
     @State var now = Date()
     @State var uiImgData = UserDefaults(suiteName: "group.widgetdecorator")!.data(forKey: "background")
-    
-    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    var isBig = false
     
     var body: some View {
-        VStack(alignment: .center){
-            VStack(alignment: .center){
-                Text("Title").font(.title)
-                Text("content").font(.body)
-                if(clock){
-                    Text("\(now)").onReceive(timer, perform: {input in self.now = input})
-                }
+        ZStack{
+            Image(uiImage: UIImage(data: uiImgData ?? Data()) ?? UIImage()).resizable()
+            if(clock){
+                Text(now, style: .date)
             }
-        }.frame(width: 170, height: 170, alignment: .center)
-        .background(Image(uiImage: UIImage(data: uiImgData ?? Data()) ?? UIImage()).resizable().clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous)))
-    }
-    
-    //save widget config
-    func save(){
-        
+        }.frame(width: isBig ? 330 : 160, height: isBig ? 330 : 160, alignment: .center)
+        .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
     }
 }
