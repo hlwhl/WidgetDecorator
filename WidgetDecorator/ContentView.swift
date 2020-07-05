@@ -18,23 +18,23 @@ struct ContentView: View {
     var body: some View {
         NavigationView{
             List{
-                CategoryRow(categoryName: "类型1", items: [WidgetPreviewItem(data: data, color: Color.red),WidgetPreviewItem(data: data, color: Color.green),WidgetPreviewItem(data: data, color: Color.blue)])
+                CategoryRow(categoryName: "类型1", items: [WidgetPreviewItem(data: data),WidgetPreviewItem(data: data),WidgetPreviewItem(data: data)])
                     .listRowInsets(EdgeInsets()).onTapGesture {
                         UserDefaults(suiteName: "group.widgetdecorator")!.set(1,forKey: "color")
                         WidgetCenter.shared.reloadAllTimelines()
                         pressed = true;
                     }
-                CategoryRow(categoryName: "类型2", items: [WidgetPreviewItem(data: data, color: Color.red),WidgetPreviewItem(data: data, color: Color.green),WidgetPreviewItem(data: data, color: Color.blue)])
+                CategoryRow(categoryName: "类型2", items: [WidgetPreviewItem(data: data),WidgetPreviewItem(data: data),WidgetPreviewItem(data: data)])
                     .listRowInsets(EdgeInsets()).onTapGesture {
                         UserDefaults(suiteName: "group.widgetdecorator")!.set(2,forKey: "color")
                         WidgetCenter.shared.reloadAllTimelines()
                     }
-                CategoryRow(categoryName: "类型3", items: [WidgetPreviewItem(data: data, color: Color.red),WidgetPreviewItem(data: data, color: Color.green),WidgetPreviewItem(data: data, color: Color.blue)])
+                CategoryRow(categoryName: "类型3", items: [WidgetPreviewItem(data: data),WidgetPreviewItem(data: data),WidgetPreviewItem(data: data)])
                     .listRowInsets(EdgeInsets()).onTapGesture {
                         UserDefaults(suiteName: "group.widgetdecorator")!.set(3,forKey: "color")
                         WidgetCenter.shared.reloadAllTimelines()
                     }
-                CategoryRow(categoryName: "类型4", items: [WidgetPreviewItem(data: data, color: Color.red),WidgetPreviewItem(data: data, color: Color.green),WidgetPreviewItem(data: data, color: Color.blue)])
+                CategoryRow(categoryName: "类型4", items: [WidgetPreviewItem(data: data),WidgetPreviewItem(data: data),WidgetPreviewItem(data: data)])
                     .listRowInsets(EdgeInsets()).onTapGesture {
                         UserDefaults(suiteName: "group.widgetdecorator")!.set(4,forKey: "color")
                         WidgetCenter.shared.reloadAllTimelines()
@@ -49,6 +49,7 @@ struct ContentView: View {
                     let asset = PHAsset.fetchAssets(withLocalIdentifiers: aid, options: nil)
                     PHImageManager.default().requestImageDataAndOrientation(for: asset.firstObject ?? PHAsset(), options: nil, resultHandler: {(data, b, c, d) in
                         self.data.backimgdata = data ?? Data()
+                        UserDefaults(suiteName: "group.widgetdecorator")!.set(data, forKey: "selectedImgData")
                     })
                     
                     WidgetCenter.shared.reloadAllTimelines()}
@@ -72,12 +73,11 @@ struct WidgetPreviewItem: View, Identifiable {
     let id = UUID()
 
     @ObservedObject var data : SharedData
-    
-    var color : Color
+
     var body: some View {
         VStack{
             Button(action: {}){
-                WidgetItem(color: color, background: Image(uiImage: UIImage(data: data.backimgdata) ?? UIImage()))
+                WidgetItem(background: UIImage())
             }
             .buttonStyle(ScaleButtonStyle())
             Text("widget name")

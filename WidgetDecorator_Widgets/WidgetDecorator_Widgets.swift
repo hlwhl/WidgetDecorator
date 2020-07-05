@@ -13,40 +13,43 @@ import UIKit
 
 struct Provider: IntentTimelineProvider {
     public func snapshot(for configuration: ConfigurationIntent, with context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), configuration: configuration, color: 1)
+        let entry = SimpleEntry(date: Date(), configuration: configuration)
         completion(entry)
     }
-    
+
     public func timeline(for configuration: ConfigurationIntent, with context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         var entries: [SimpleEntry] = []
         
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         let currentDate = Date()
-        
-        let entryDate = currentDate
         //let data = UserDefaults(suiteName: "group.widgetdecorator")?.data(forKey: "background")
         
-        let id = UserDefaults(suiteName: "group.widgetdecorator")!.string(forKey: "selectedImgId") ?? ""
-        var aid : [String] = [String]()
-        aid.append(id)
-        let asset = PHAsset.fetchAssets(withLocalIdentifiers: aid, options: nil)
-        PHImageManager.default().requestImageDataAndOrientation(for: asset.firstObject ?? PHAsset(), options: nil, resultHandler: {(data, b, c, d) in
-            
-            let entry = SimpleEntry(date: entryDate, configuration: configuration, color: UserDefaults.standard.integer(forKey: "color"), background: Image(uiImage: UIImage(data: data ?? Data()) ?? UIImage()))
-            
-            entries.append(entry)
-            let timeline = Timeline(entries: entries, policy: .atEnd)
-            completion(timeline)
-        })
-    
-
-        //        getTheLatestPhotos(amount: 1).enumerateObjects({ (a,b,c) in
-        //            PHImageManager.default().requestImage(for: a, targetSize: PHImageManagerMaximumSize, contentMode: .default, options: nil, resultHandler: { (image, info) in
-        //                entry.img = Image(uiImage: image ?? UIImage())
-        //                entries.append(entry)
-        //                let timeline = Timeline(entries: entries, policy: .never)
-        //                completion(timeline)
-        //            })
+        let data = UserDefaults(suiteName: "group.widgetdecorator")!.data(forKey: "selectedImgData")
+        guard let source = CGImageSourceCreateWithData((data ?? Data()) as CFData, nil) else {
+            return;
+        }
+        let count = CGImageSourceGetCount(source)
+        for index in 0 ..< count {
+            let entryDate = Calendar.current.date(byAdding: .second, value: index, to: currentDate)!
+            if let image = CGImageSourceCreateImageAtIndex(source, index, nil) {
+                let entry = SimpleEntry(date: entryDate, configuration: configuration, background:  UIImage(cgImage: image))
+                entries.append(entry)
+            }
+        }
+        let timeline = Timeline(entries: entries, policy: .atEnd)
+        completion(timeline)
+        
+        //        let id = UserDefaults(suiteName: "group.widgetdecorator")!.string(forKey: "selectedImgId") ?? ""
+        //        var aid : [String] = [String]()
+        //        aid.append(id)
+        //        let asset = PHAsset.fetchAssets(withLocalIdentifiers: aid, options: nil).firstObject
+        //        PHImageManager.default().requestImageDataAndOrientation(for: asset ?? PHAsset(), options: nil, resultHandler: {(data, b, c, d) in
+        //
+        //            let entry = SimpleEntry(date: entryDate, configuration: configuration, color: UserDefaults.standard.integer(forKey: "color"), background: Image(uiImage: UIImage(data: data ?? Data()) ?? UIImage()))
+        //
+        //            entries.append(entry)
+        //            let timeline = Timeline(entries: entries, policy: .atEnd)
+        //            completion(timeline)
         //        })
     }
     
@@ -62,39 +65,37 @@ struct Provider: IntentTimelineProvider {
 struct SimpleEntry: TimelineEntry {
     public let date: Date
     public let configuration: ConfigurationIntent
-    public var color: Int
-    public var background: Image = Image("")
+    public var background : UIImage = UIImage()
 }
 
 struct PlaceholderView : View {
     var body: some View {
-        Text("Placeholder View")
+        Text("Loading...")
     }
 }
 
 struct WidgetDecorator_WidgetsEntryView : View {
     var entry: Provider.Entry
     @Environment(\.widgetFamily) var family
-    @State var color = UserDefaults(suiteName: "group.widgetdecorator")!.integer(forKey: "color")
     
     @ViewBuilder
     var body: some View {
         switch family {
         case .systemSmall:
-            VStack{
-                WidgetItem(color: Color.blue, clock: entry.configuration.showTime?.boolValue ?? false, background: entry.background)
+            ZStack{
+                WidgetItem(now: entry.date, background: entry.background)
             }
         case .systemMedium:
             HStack(){
-                WidgetItem(color: Color.blue, clock: false, background: entry.background)
+                WidgetItem(clock: false, background: entry.background, color: Color.blue)
                 Text(Date(), style: .date)
             }
         case .systemLarge:
             VStack{
-                WidgetItem(color: Color.blue, clock: entry.configuration.showTime?.boolValue ?? false, background: entry.background, isBig: true)
+                WidgetItem(background: entry.background, isBig: true)
             }
         default:
-            WidgetItem(color: Color.black, clock: entry.configuration.showTime?.boolValue ?? false, background: entry.background)
+            WidgetItem(clock: entry.configuration.showTime?.boolValue ?? false, background: entry.background)
         }
     }
 }

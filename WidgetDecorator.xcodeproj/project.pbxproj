@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		6514403424AEEF9C00EF8D84 /* PHPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6514403324AEEF9C00EF8D84 /* PHPickerView.swift */; };
+		65547ACF24AF758D000B349D /* GIFPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65547ACE24AF758D000B349D /* GIFPlayerView.swift */; };
+		65547AD024AF758D000B349D /* GIFPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65547ACE24AF758D000B349D /* GIFPlayerView.swift */; };
+		65547AD224AF7770000B349D /* SwiftUIGIFPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65547AD124AF7770000B349D /* SwiftUIGIFPlayerView.swift */; };
+		65547AD324AF7770000B349D /* SwiftUIGIFPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65547AD124AF7770000B349D /* SwiftUIGIFPlayerView.swift */; };
 		65ADE7B124ADA66500763665 /* WidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ADE7B024ADA66500763665 /* WidgetView.swift */; };
 		65ADE7B224ADA66500763665 /* WidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ADE7B024ADA66500763665 /* WidgetView.swift */; };
 		65D5F26224AC3B1200DAADF0 /* WidgetDecoratorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D5F26124AC3B1200DAADF0 /* WidgetDecoratorApp.swift */; };
@@ -65,6 +69,8 @@
 
 /* Begin PBXFileReference section */
 		6514403324AEEF9C00EF8D84 /* PHPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PHPickerView.swift; sourceTree = "<group>"; };
+		65547ACE24AF758D000B349D /* GIFPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFPlayerView.swift; sourceTree = "<group>"; };
+		65547AD124AF7770000B349D /* SwiftUIGIFPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIGIFPlayerView.swift; sourceTree = "<group>"; };
 		65ADE7B024ADA66500763665 /* WidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetView.swift; sourceTree = "<group>"; };
 		65D5F25E24AC3B1200DAADF0 /* WidgetDecorator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WidgetDecorator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65D5F26124AC3B1200DAADF0 /* WidgetDecoratorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetDecoratorApp.swift; sourceTree = "<group>"; };
@@ -158,6 +164,8 @@
 				65D5F26524AC3B1300DAADF0 /* Assets.xcassets */,
 				65D5F26A24AC3B1300DAADF0 /* Info.plist */,
 				65D5F26724AC3B1300DAADF0 /* Preview Content */,
+				65547ACE24AF758D000B349D /* GIFPlayerView.swift */,
+				65547AD124AF7770000B349D /* SwiftUIGIFPlayerView.swift */,
 			);
 			path = WidgetDecorator;
 			sourceTree = "<group>";
@@ -370,6 +378,8 @@
 			files = (
 				65D5F29E24AC3BEF00DAADF0 /* WidgetDecorator_Widgets.intentdefinition in Sources */,
 				65D5F26424AC3B1200DAADF0 /* ContentView.swift in Sources */,
+				65547ACF24AF758D000B349D /* GIFPlayerView.swift in Sources */,
+				65547AD224AF7770000B349D /* SwiftUIGIFPlayerView.swift in Sources */,
 				6514403424AEEF9C00EF8D84 /* PHPickerView.swift in Sources */,
 				65ADE7B124ADA66500763665 /* WidgetView.swift in Sources */,
 				65D5F26224AC3B1200DAADF0 /* WidgetDecoratorApp.swift in Sources */,
@@ -396,8 +406,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65547AD024AF758D000B349D /* GIFPlayerView.swift in Sources */,
 				65ADE7B224ADA66500763665 /* WidgetView.swift in Sources */,
 				65D5F29D24AC3BEF00DAADF0 /* WidgetDecorator_Widgets.intentdefinition in Sources */,
+				65547AD324AF7770000B349D /* SwiftUIGIFPlayerView.swift in Sources */,
 				65D5F29824AC3BEE00DAADF0 /* WidgetDecorator_Widgets.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -573,7 +585,7 @@
 				CODE_SIGN_ENTITLEMENTS = WidgetDecorator/WidgetDecorator.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"WidgetDecorator/Preview Content\"";
-				DEVELOPMENT_TEAM = WR4542K9CA;
+				DEVELOPMENT_TEAM = 9N3YC9UU5H;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = WidgetDecorator/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -595,7 +607,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WR4542K9CA;
+				DEVELOPMENT_TEAM = 9N3YC9UU5H;
 				INFOPLIST_FILE = WidgetDecoratorTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -617,7 +629,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WR4542K9CA;
+				DEVELOPMENT_TEAM = 9N3YC9UU5H;
 				INFOPLIST_FILE = WidgetDecoratorTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -638,7 +650,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WR4542K9CA;
+				DEVELOPMENT_TEAM = 9N3YC9UU5H;
 				INFOPLIST_FILE = WidgetDecoratorUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -658,7 +670,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WR4542K9CA;
+				DEVELOPMENT_TEAM = 9N3YC9UU5H;
 				INFOPLIST_FILE = WidgetDecoratorUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -681,6 +693,7 @@
 				CODE_SIGN_ENTITLEMENTS = WidgetDecorator_WidgetsExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9N3YC9UU5H;
+				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				INFOPLIST_FILE = WidgetDecorator_Widgets/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -704,6 +717,7 @@
 				CODE_SIGN_ENTITLEMENTS = WidgetDecorator_WidgetsExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WR4542K9CA;
+				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				INFOPLIST_FILE = WidgetDecorator_Widgets/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
