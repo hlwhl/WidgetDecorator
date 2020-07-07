@@ -10,19 +10,18 @@ import SwiftUI
 import Intents
 import Photos
 import UIKit
+import URLImage
 
 struct Provider: IntentTimelineProvider {
     public func snapshot(for configuration: ConfigurationIntent, with context: Context, completion: @escaping (SimpleEntry) -> ()) {
         let entry = SimpleEntry(date: Date(), configuration: configuration)
         completion(entry)
     }
-
+    
     public func timeline(for configuration: ConfigurationIntent, with context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         var entries: [SimpleEntry] = []
         
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         let currentDate = Date()
-        //let data = UserDefaults(suiteName: "group.widgetdecorator")?.data(forKey: "background")
         
         let data = UserDefaults(suiteName: "group.widgetdecorator")!.data(forKey: "selectedImgData")
         guard let source = CGImageSourceCreateWithData((data ?? Data()) as CFData, nil) else {
@@ -38,28 +37,7 @@ struct Provider: IntentTimelineProvider {
         }
         let timeline = Timeline(entries: entries, policy: .atEnd)
         completion(timeline)
-        
-        //        let id = UserDefaults(suiteName: "group.widgetdecorator")!.string(forKey: "selectedImgId") ?? ""
-        //        var aid : [String] = [String]()
-        //        aid.append(id)
-        //        let asset = PHAsset.fetchAssets(withLocalIdentifiers: aid, options: nil).firstObject
-        //        PHImageManager.default().requestImageDataAndOrientation(for: asset ?? PHAsset(), options: nil, resultHandler: {(data, b, c, d) in
-        //
-        //            let entry = SimpleEntry(date: entryDate, configuration: configuration, color: UserDefaults.standard.integer(forKey: "color"), background: Image(uiImage: UIImage(data: data ?? Data()) ?? UIImage()))
-        //
-        //            entries.append(entry)
-        //            let timeline = Timeline(entries: entries, policy: .atEnd)
-        //            completion(timeline)
-        //        })
     }
-    
-    func getTheLatestPhotos(amount:Int) -> PHFetchResult<PHAsset>{
-        let allPhotosOptions = PHFetchOptions()
-        allPhotosOptions.fetchLimit = amount
-        allPhotosOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-        return PHAsset.fetchAssets(with: allPhotosOptions)
-    }
-    
 }
 
 struct SimpleEntry: TimelineEntry {
@@ -70,7 +48,9 @@ struct SimpleEntry: TimelineEntry {
 
 struct PlaceholderView : View {
     var body: some View {
-        Text("Loading...")
+        VStack{
+            Text("Loading...")
+        }
     }
 }
 
@@ -80,23 +60,20 @@ struct WidgetDecorator_WidgetsEntryView : View {
     
     @ViewBuilder
     var body: some View {
-        switch family {
-        case .systemSmall:
-            ZStack{
-                WidgetItem(now: entry.date, background: entry.background)
-            }
-        case .systemMedium:
-            HStack(){
-                WidgetItem(clock: false, background: entry.background, color: Color.blue)
-                Text(Date(), style: .date)
-            }
-        case .systemLarge:
-            VStack{
-                WidgetItem(background: entry.background, isBig: true)
-            }
-        default:
-            WidgetItem(clock: entry.configuration.showTime?.boolValue ?? false, background: entry.background)
-        }
+//        switch family {
+//        case .systemSmall:
+//            WidgetItemView(background: entry.background, showClock: entry.configuration.showTime?.boolValue ?? false)
+//
+//        case .systemMedium:
+//            WidgetItemView(background: entry.background, showClock: entry.configuration.showTime?.boolValue ?? false)
+//
+//        case .systemLarge:
+//            WidgetItemView(background: entry.background, isLargeMode: true, showClock: entry.configuration.showTime?.boolValue ?? false)
+//
+//        default:
+//            WidgetItemView(background: entry.background, showClock: entry.configuration.showTime?.boolValue ?? false)
+//        }
+        URLImage(url: URL("https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3166299204,1945385073&fm=26&gp=0.jpg"))
     }
 }
 

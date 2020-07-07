@@ -42,8 +42,6 @@ struct ContentView: View {
             }
             .sheet(isPresented: $showImagePicker) {
                 PHPickerView() {image , assetId in
-                    UserDefaults(suiteName: "group.widgetdecorator")!.set(assetId, forKey: "selectedImgId")
-                    
                     var aid : [String] = [String]()
                     aid.append(assetId)
                     let asset = PHAsset.fetchAssets(withLocalIdentifiers: aid, options: nil)
@@ -51,7 +49,6 @@ struct ContentView: View {
                         self.data.backimgdata = data ?? Data()
                         UserDefaults(suiteName: "group.widgetdecorator")!.set(data, forKey: "selectedImgData")
                     })
-                    
                     WidgetCenter.shared.reloadAllTimelines()}
             }
             .navigationBarTitle("Widget库")
@@ -77,7 +74,7 @@ struct WidgetPreviewItem: View, Identifiable {
     var body: some View {
         VStack{
             Button(action: {}){
-                WidgetItem(background: UIImage())
+                WidgetItemView(background: UIImage(data: data.backimgdata) ?? UIImage())
             }
             .buttonStyle(ScaleButtonStyle())
             Text("widget name")
