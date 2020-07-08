@@ -41,7 +41,7 @@ struct ContentView: View {
                     }
             }
             .sheet(isPresented: $showImagePicker) {
-                PHPickerView() {image , assetId in
+                PHPickerView() {assetId in
                     var aid : [String] = [String]()
                     aid.append(assetId)
                     let asset = PHAsset.fetchAssets(withLocalIdentifiers: aid, options: nil)

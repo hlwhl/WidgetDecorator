@@ -29,7 +29,9 @@ struct Provider: IntentTimelineProvider {
         }
         let count = CGImageSourceGetCount(source)
         for index in 0 ..< count {
-            let entryDate = Calendar.current.date(byAdding: .second, value: index, to: currentDate)!
+            
+            //let entryDate = Calendar.current.date(byAdding: .second, value: index, to: currentDate)!
+            let entryDate = currentDate.addingTimeInterval(0.5*Double(index))
             if let image = CGImageSourceCreateImageAtIndex(source, index, nil) {
                 let entry = SimpleEntry(date: entryDate, configuration: configuration, background:  UIImage(cgImage: image))
                 entries.append(entry)

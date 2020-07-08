@@ -14,7 +14,7 @@ struct PHPickerView: UIViewControllerRepresentable {
     
     @Environment(\.presentationMode) private var presentationMode
     
-    let onImagePicked: (UIImage, String) -> Void
+    let onImagePicked: (String) -> Void
     
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
@@ -47,15 +47,7 @@ struct PHPickerView: UIViewControllerRepresentable {
         func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
             
             picker.dismiss( animated: true )
-            
-            if let itemProvider = results.first?.itemProvider, itemProvider.canLoadObject( ofClass: UIImage.self ) {
-                itemProvider.loadObject(ofClass: UIImage.self) { [weak self] image, error in
-                    DispatchQueue.main.async { [self] in
-                        guard let self = self, let image = image as? UIImage else { return }
-                        self.parent.onImagePicked(image, results.first?.assetIdentifier ?? "")
-                    }
-                }
-            }
+            self.parent.onImagePicked(results.first?.assetIdentifier ?? "")
         }
     }
     
