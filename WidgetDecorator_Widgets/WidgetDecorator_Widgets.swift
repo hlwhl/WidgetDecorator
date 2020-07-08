@@ -60,20 +60,19 @@ struct WidgetDecorator_WidgetsEntryView : View {
     
     @ViewBuilder
     var body: some View {
-//        switch family {
-//        case .systemSmall:
-//            WidgetItemView(background: entry.background, showClock: entry.configuration.showTime?.boolValue ?? false)
-//
-//        case .systemMedium:
-//            WidgetItemView(background: entry.background, showClock: entry.configuration.showTime?.boolValue ?? false)
-//
-//        case .systemLarge:
-//            WidgetItemView(background: entry.background, isLargeMode: true, showClock: entry.configuration.showTime?.boolValue ?? false)
-//
-//        default:
-//            WidgetItemView(background: entry.background, showClock: entry.configuration.showTime?.boolValue ?? false)
-//        }
-        URLImage(url: URL("https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3166299204,1945385073&fm=26&gp=0.jpg"))
+        switch family {
+        case .systemSmall:
+            WidgetItemView(widgetFamily: family, background: entry.background, showClock: entry.configuration.showTime?.boolValue ?? false)
+
+        case .systemMedium:
+            WidgetItemView(widgetFamily: family, background: entry.background, showClock: entry.configuration.showTime?.boolValue ?? false)
+
+        case .systemLarge:
+            WidgetItemView(widgetFamily: family, background: entry.background, showClock: entry.configuration.showTime?.boolValue ?? false)
+
+        default:
+            WidgetItemView(background: entry.background, showClock: entry.configuration.showTime?.boolValue ?? false)
+        }
     }
 }
 

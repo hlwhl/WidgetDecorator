@@ -7,12 +7,13 @@
 
 import SwiftUI
 import Photos
+import WidgetKit
 
 //实际widget view
 struct WidgetItemView: View{
     @State var now = Date()
+    var widgetFamily = WidgetFamily.systemSmall
     var background : UIImage
-    var isLargeMode = false
     var showClock:Bool = false
     
     var body: some View {
@@ -26,8 +27,34 @@ struct WidgetItemView: View{
                 }
             }
             
-        }.frame(width: isLargeMode ? 330 : 160, height: isLargeMode ? 330 : 160, alignment: .center)
+        }.frame(width: getWidgetWidth(), height: getWidgetHeight(), alignment: .center)
         .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+    }
+    
+    func getWidgetWidth() -> CGFloat{
+        switch widgetFamily {
+        case .systemSmall:
+            return 160
+        case .systemMedium:
+            return 330
+        case .systemLarge:
+            return 330
+        default:
+            return 160
+        }
+    }
+    
+    func getWidgetHeight() -> CGFloat{
+        switch widgetFamily {
+        case .systemSmall:
+            return 160
+        case .systemMedium:
+            return 160
+        case .systemLarge:
+            return 330
+        default:
+            return 160
+        }
     }
 }
 

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,7 +12,6 @@
 		65547AD024AF758D000B349D /* GIFPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65547ACE24AF758D000B349D /* GIFPlayerView.swift */; };
 		65547AD224AF7770000B349D /* SwiftUIGIFPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65547AD124AF7770000B349D /* SwiftUIGIFPlayerView.swift */; };
 		65547AD324AF7770000B349D /* SwiftUIGIFPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65547AD124AF7770000B349D /* SwiftUIGIFPlayerView.swift */; };
-		655B518324B33B6800FF481B /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = 655B518224B33B6800FF481B /* URLImage */; };
 		65ADE7B124ADA66500763665 /* WidgetItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ADE7B024ADA66500763665 /* WidgetItemView.swift */; };
 		65ADE7B224ADA66500763665 /* WidgetItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ADE7B024ADA66500763665 /* WidgetItemView.swift */; };
 		65D5F26224AC3B1200DAADF0 /* WidgetDecoratorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D5F26124AC3B1200DAADF0 /* WidgetDecoratorApp.swift */; };
@@ -79,7 +78,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				655B518324B33B6800FF481B /* URLImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -179,7 +177,6 @@
 			);
 			name = WidgetDecorator;
 			packageProductDependencies = (
-				655B518224B33B6800FF481B /* URLImage */,
 			);
 			productName = WidgetDecorator;
 			productReference = 65D5F25E24AC3B1200DAADF0 /* WidgetDecorator.app */;
@@ -229,7 +226,6 @@
 			);
 			mainGroup = 65D5F25524AC3B1200DAADF0;
 			packageReferences = (
-				655B518124B33B6800FF481B /* XCRemoteSwiftPackageReference "url-image" */,
 			);
 			productRefGroup = 65D5F25F24AC3B1200DAADF0 /* Products */;
 			projectDirPath = "";
@@ -544,25 +540,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		655B518124B33B6800FF481B /* XCRemoteSwiftPackageReference "url-image" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/dmytro-anokhin/url-image.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.9.18;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		655B518224B33B6800FF481B /* URLImage */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 655B518124B33B6800FF481B /* XCRemoteSwiftPackageReference "url-image" */;
-			productName = URLImage;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 65D5F25624AC3B1200DAADF0 /* Project object */;
 }
