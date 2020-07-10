@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,6 +12,8 @@
 		65547AD024AF758D000B349D /* GIFPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65547ACE24AF758D000B349D /* GIFPlayerView.swift */; };
 		65547AD224AF7770000B349D /* SwiftUIGIFPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65547AD124AF7770000B349D /* SwiftUIGIFPlayerView.swift */; };
 		65547AD324AF7770000B349D /* SwiftUIGIFPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65547AD124AF7770000B349D /* SwiftUIGIFPlayerView.swift */; };
+		658FE49E24B5A72C004769DE /* SwiftUIPager in Frameworks */ = {isa = PBXBuildFile; productRef = 658FE49D24B5A72C004769DE /* SwiftUIPager */; };
+		658FE4A024B5A78B004769DE /* WidgetPagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658FE49F24B5A78B004769DE /* WidgetPagerView.swift */; };
 		65ADE7B124ADA66500763665 /* WidgetItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ADE7B024ADA66500763665 /* WidgetItemView.swift */; };
 		65ADE7B224ADA66500763665 /* WidgetItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ADE7B024ADA66500763665 /* WidgetItemView.swift */; };
 		65D5F26224AC3B1200DAADF0 /* WidgetDecoratorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D5F26124AC3B1200DAADF0 /* WidgetDecoratorApp.swift */; };
@@ -55,6 +57,7 @@
 		6514403324AEEF9C00EF8D84 /* PHPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PHPickerView.swift; sourceTree = "<group>"; };
 		65547ACE24AF758D000B349D /* GIFPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFPlayerView.swift; sourceTree = "<group>"; };
 		65547AD124AF7770000B349D /* SwiftUIGIFPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIGIFPlayerView.swift; sourceTree = "<group>"; };
+		658FE49F24B5A78B004769DE /* WidgetPagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetPagerView.swift; sourceTree = "<group>"; };
 		65ADE7B024ADA66500763665 /* WidgetItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetItemView.swift; sourceTree = "<group>"; };
 		65D5F25E24AC3B1200DAADF0 /* WidgetDecorator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WidgetDecorator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65D5F26124AC3B1200DAADF0 /* WidgetDecoratorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetDecoratorApp.swift; sourceTree = "<group>"; };
@@ -78,6 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				658FE49E24B5A72C004769DE /* SwiftUIPager in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,6 +130,7 @@
 				65D5F26724AC3B1300DAADF0 /* Preview Content */,
 				65547ACE24AF758D000B349D /* GIFPlayerView.swift */,
 				65547AD124AF7770000B349D /* SwiftUIGIFPlayerView.swift */,
+				658FE49F24B5A78B004769DE /* WidgetPagerView.swift */,
 			);
 			path = WidgetDecorator;
 			sourceTree = "<group>";
@@ -177,6 +182,7 @@
 			);
 			name = WidgetDecorator;
 			packageProductDependencies = (
+				658FE49D24B5A72C004769DE /* SwiftUIPager */,
 			);
 			productName = WidgetDecorator;
 			productReference = 65D5F25E24AC3B1200DAADF0 /* WidgetDecorator.app */;
@@ -226,6 +232,7 @@
 			);
 			mainGroup = 65D5F25524AC3B1200DAADF0;
 			packageReferences = (
+				658FE49C24B5A72C004769DE /* XCRemoteSwiftPackageReference "SwiftUIPager" */,
 			);
 			productRefGroup = 65D5F25F24AC3B1200DAADF0 /* Products */;
 			projectDirPath = "";
@@ -268,6 +275,7 @@
 				65547AD224AF7770000B349D /* SwiftUIGIFPlayerView.swift in Sources */,
 				6514403424AEEF9C00EF8D84 /* PHPickerView.swift in Sources */,
 				65ADE7B124ADA66500763665 /* WidgetItemView.swift in Sources */,
+				658FE4A024B5A78B004769DE /* WidgetPagerView.swift in Sources */,
 				65D5F26224AC3B1200DAADF0 /* WidgetDecoratorApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -540,6 +548,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		658FE49C24B5A72C004769DE /* XCRemoteSwiftPackageReference "SwiftUIPager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/fermoya/SwiftUIPager.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.7.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		658FE49D24B5A72C004769DE /* SwiftUIPager */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 658FE49C24B5A72C004769DE /* XCRemoteSwiftPackageReference "SwiftUIPager" */;
+			productName = SwiftUIPager;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 65D5F25624AC3B1200DAADF0 /* Project object */;
 }

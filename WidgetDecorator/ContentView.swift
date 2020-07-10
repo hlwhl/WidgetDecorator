@@ -17,29 +17,30 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView{
-            List{
-                CategoryRow(categoryName: "类型1", items: [WidgetPreviewItem(data: data),WidgetPreviewItem(data: data),WidgetPreviewItem(data: data)])
-                    .listRowInsets(EdgeInsets()).onTapGesture {
-                        UserDefaults(suiteName: "group.widgetdecorator")!.set(1,forKey: "color")
-                        WidgetCenter.shared.reloadAllTimelines()
-                        pressed = true;
-                    }
-                CategoryRow(categoryName: "类型2", items: [WidgetPreviewItem(data: data),WidgetPreviewItem(data: data),WidgetPreviewItem(data: data)])
-                    .listRowInsets(EdgeInsets()).onTapGesture {
-                        UserDefaults(suiteName: "group.widgetdecorator")!.set(2,forKey: "color")
-                        WidgetCenter.shared.reloadAllTimelines()
-                    }
-                CategoryRow(categoryName: "类型3", items: [WidgetPreviewItem(data: data),WidgetPreviewItem(data: data),WidgetPreviewItem(data: data)])
-                    .listRowInsets(EdgeInsets()).onTapGesture {
-                        UserDefaults(suiteName: "group.widgetdecorator")!.set(3,forKey: "color")
-                        WidgetCenter.shared.reloadAllTimelines()
-                    }
-                CategoryRow(categoryName: "类型4", items: [WidgetPreviewItem(data: data),WidgetPreviewItem(data: data),WidgetPreviewItem(data: data)])
-                    .listRowInsets(EdgeInsets()).onTapGesture {
-                        UserDefaults(suiteName: "group.widgetdecorator")!.set(4,forKey: "color")
-                        WidgetCenter.shared.reloadAllTimelines()
-                    }
-            }
+//            List{
+//                CategoryRow(categoryName: "类型1", items: [WidgetPreviewItem(data: data),WidgetPreviewItem(data: data),WidgetPreviewItem(data: data)])
+//                    .listRowInsets(EdgeInsets()).onTapGesture {
+//                        UserDefaults(suiteName: "group.widgetdecorator")!.set(1,forKey: "color")
+//                        WidgetCenter.shared.reloadAllTimelines()
+//                        pressed = true;
+//                    }
+//                CategoryRow(categoryName: "类型2", items: [WidgetPreviewItem(data: data),WidgetPreviewItem(data: data),WidgetPreviewItem(data: data)])
+//                    .listRowInsets(EdgeInsets()).onTapGesture {
+//                        UserDefaults(suiteName: "group.widgetdecorator")!.set(2,forKey: "color")
+//                        WidgetCenter.shared.reloadAllTimelines()
+//                    }
+//                CategoryRow(categoryName: "类型3", items: [WidgetPreviewItem(data: data),WidgetPreviewItem(data: data),WidgetPreviewItem(data: data)])
+//                    .listRowInsets(EdgeInsets()).onTapGesture {
+//                        UserDefaults(suiteName: "group.widgetdecorator")!.set(3,forKey: "color")
+//                        WidgetCenter.shared.reloadAllTimelines()
+//                    }
+//                CategoryRow(categoryName: "类型4", items: [WidgetPreviewItem(data: data),WidgetPreviewItem(data: data),WidgetPreviewItem(data: data)])
+//                    .listRowInsets(EdgeInsets()).onTapGesture {
+//                        UserDefaults(suiteName: "group.widgetdecorator")!.set(4,forKey: "color")
+//                        WidgetCenter.shared.reloadAllTimelines()
+//                    }
+//            }
+            WidgetPagerView()
             .sheet(isPresented: $showImagePicker) {
                 PHPickerView() {assetId in
                     var aid : [String] = [String]()
